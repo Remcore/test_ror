@@ -44,10 +44,11 @@ SELECT user_id, SUM(reward)
 ```
 
 2 задание
-
+```
 SELECT reports.barcode, reports.price, title FROM public.reports
 	LEFT OUTER JOIN public.pos ON title = title 
 	WHERE reports.pos_id = pos.id AND title IN (SELECT title
 		FROM public.pos
 		GROUP BY title
 		HAVING COUNT(*) > 1);
+```
