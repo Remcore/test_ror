@@ -2,6 +2,10 @@
 
 class Email
   def initialize(email, character)
+    throw "invalid email" if phone.match(/^\S{0,}@\S{1,}.[a-z]{0,5}/).nil?
+    throw "invalid character, it must be a single character" if character.size > 1
+    throw "invalid character, it must be a [a-z] or *" if character.match?(/^[a-zA-z*]{1}/)
+
     @email = email
     @character = character
   end

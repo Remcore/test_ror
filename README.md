@@ -35,15 +35,18 @@
 ```
 SELECT user_id, SUM(reward) 
 	FROM public.reports
-	where created_at > '2019-01-01' 
+	WHERE created_at > '2019-01-01' 
 	AND user_id NOT IN (
 		SELECT user_id 
 		FROM public.reports 
-		WHERE created_at < '2018-01-01') 
+		WHERE created_at < '2018-01-01' AND user_id NOT IN (
+			SELECT user_id 
+			WHERE created_at > '2018-01-01)) 
 	GROUP BY user_id;
 ```
 
 2 задание
+не понимаю как использвоать аггрегативные функции для выполнения этого задания
 ```
 SELECT reports.barcode, reports.price, title FROM public.reports
 	LEFT OUTER JOIN public.pos ON title = title 
